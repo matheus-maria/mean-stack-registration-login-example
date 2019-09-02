@@ -1,9 +1,11 @@
-﻿<h1>Question Page</h1>
+﻿<h1>{{vm.title}}</h1>
 
+
+<!-- HEADER -->
 <div class="form-container">
     <form> 
         <div class="questionForm">       
-            <div class="form-group">
+            <div class="form-group inputQuestion">
                 <label for="question">Question</label>
                 <input type="text" id="question" class="form-control" ng-model="vm.question" required />
             </div>        
@@ -12,4 +14,14 @@
             </div>
         </div>
     </form>
+</div>
+
+<!-- BODY -->
+<div class="panel panel-default">
+    <div class="panel-body">
+        Questions
+    </div>
+    <ul class="list-group" ng-repeat="(key, value) in vm.questions">
+        <li class="list-group-item">{{value.value}}</li>            
+    </ul>
 </div>

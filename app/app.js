@@ -28,7 +28,7 @@
             .state('question', {
                 url: '/question',
                 templateUrl: 'question/index.html',
-                controller: 'Question.IndexController',
+                controller: 'questionController',
                 controllerAs: 'vm',
                 data: { activeTab: 'question' }
             });

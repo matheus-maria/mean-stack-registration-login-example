@@ -10,5 +10,10 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-end;    
+}
+
+.inputQuestion{
+    width: 65vw;
+    margin-left: 5px;
 }
