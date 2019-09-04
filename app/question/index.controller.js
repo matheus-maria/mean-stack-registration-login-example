@@ -8,19 +8,28 @@
     function Controller($window, UserService, FlashService) {
         var vm = this;
 
+        vm.question = '';
+        vm.createQuestion = createQuestion
+
         vm.title = 'Question Page';
 
-        vm.questions = [
-            { key : 1, value : 'Matheus'},
-            { key : 2, value : 'Leite'},
-            { key : 3, value : 'Maria'},
-            { key : 4, value : 'Higao'},
-            { key : 5, value : 'Gile'},
+        vm.questions = []
 
-        ]
+        initController();
 
-        function createQuestion (question) {
-            console.log('Question:',question)
+        function initController() {
+            // get current user
+            UserService.GetCurrent().then(function (user) {
+                vm.user = user;
+            });
+        }
+
+        function createQuestion () {
+            if(vm.question != null || vm.question != '') {               
+                vm.questions.push( { key: vm.questions.length ,value: vm.question } )
+                vm.question = null
+                //TODO MONGO INTEGRATION
+            }
         }
     }
 
