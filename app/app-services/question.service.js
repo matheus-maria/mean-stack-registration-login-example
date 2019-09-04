@@ -6,7 +6,7 @@
         .factory('QuestionService', Service);
 
     function Service($http, $q) {
-        var service = {}
+        var service = {};
         
         service.GetAll = GetAll;        
         service.Create = Create;        

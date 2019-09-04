@@ -3,9 +3,9 @@
 
     angular
         .module('app')
-        .controller('questionController', Controller);
+        .controller('Question.IndexController', Controller);
 
-    function Controller($window, UserService, FlashService) {
+    function Controller($window, QuestionService) {
         var vm = this;
 
         vm.question = '';
@@ -18,19 +18,21 @@
         initController();
 
         function initController() {
-            // get current user
-            UserService.GetCurrent().then(function (user) {
-                vm.user = user;
+            QuestionService.GetAll().then(function (questions) {
+                vm.questions = questions;
             });
         }
 
         function createQuestion () {
-            if(vm.question != null || vm.question != '') {               
-                vm.questions.push( { key: vm.questions.length ,value: vm.question } )
+
+            if(vm.question != null || vm.question != '') {  
+                var quest = { key: vm.questions.length ,value: vm.question }     
+                vm.questions.push(quest)
+                QuestionService.Create(quest)
                 vm.question = null
-                //TODO MONGO INTEGRATION
             }
         }
-    }
+        
+    }    
 
 })();
