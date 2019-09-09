@@ -5,7 +5,7 @@
         .module('app')
         .controller('Question.IndexController', Controller);
 
-    function Controller($window, QuestionService) {
+    function Controller($window,QuestionService) {
         var vm = this;
 
         vm.question = '';
@@ -18,9 +18,11 @@
         initController();
 
         function initController() {
+            
             QuestionService.GetAll().then(function (questions) {
                 vm.questions = questions;
             });
+            
         }
 
         function createQuestion () {
@@ -31,6 +33,7 @@
                 QuestionService.Create(quest)
                 vm.question = null
             }
+            
         }
         
     }    

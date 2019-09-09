@@ -1,15 +1,15 @@
-﻿var config = require('config.json');
-var express = require('express');
+﻿var express = require('express');
 var router = express.Router();
 var questionService = require('services/question.service');
 
 // routes
-router.post('/question', registerQuestion);
-router.get('/question', getQuestions);
+router.post('/create', registerQuestion);
+router.get('/getAll', getQuestions);
 
 module.exports = router;
 
 function registerQuestion(req, res) {
+    
     questionService.Create(req.body)
         .then(function () {
             res.sendStatus(200);
@@ -20,6 +20,7 @@ function registerQuestion(req, res) {
 }
 
 function getQuestions(req, res) {
+    
     questionService.GetAll()
         .then(function (questions) {
             if (questions) {

@@ -14,11 +14,11 @@
         return service;
 
         function GetAll() {
-            return $http.get('/api/question').then(handleSuccess, handleError);
+            return $http.get('http://localhost:9050/api/question/getAll').then(handleSuccess, handleError);
         }        
 
         function Create(question) {
-            return $http.post('/api/question', question).then(handleSuccess, handleError);
+            return $http.post('http://localhost:9050/api/question/create', question).then(handleSuccess, handleError);
         }
 
         // private functions

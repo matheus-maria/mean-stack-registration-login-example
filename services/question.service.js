@@ -15,17 +15,20 @@ service.Create = Create;
 module.exports = service;
 
 function GetAll() {
+
     var deferred = Q.defer();
+    db.questions.find().toArray(function(err, items) {
+
+        if (items) {  
+            deferred.resolve(_.omit(items, 'item'));
+        } else {            
+            deferred.resolve();
+        }
+        return deferred.promise;
+
+    });
+
     
-    var questions = db.questions.find({})
-
-    if (questions) {   
-        deferred.resolve(questions);
-    } else {            
-        deferred.resolve();
-    }
-
-    return deferred.promise;
 }
 
 function Create(question) {
