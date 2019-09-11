@@ -18,16 +18,14 @@ function GetAll() {
 
     var deferred = Q.defer();
     db.questions.find().toArray(function(err, items) {
-
         if (items) {  
-            deferred.resolve(_.omit(items, 'item'));
+            deferred.resolve(items);
         } else {            
             deferred.resolve();
         }
-        return deferred.promise;
-
+        console.log(deferred.promise)
     });
-
+    return deferred.promise;
     
 }
 

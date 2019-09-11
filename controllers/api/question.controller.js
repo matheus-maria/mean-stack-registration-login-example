@@ -21,8 +21,7 @@ function registerQuestion(req, res) {
 
 function getQuestions(req, res) {
     
-    questionService.GetAll()
-        .then(function (questions) {
+    questionService.GetAll().then(function (questions) {
             if (questions) {
                 res.send(questions);
             } else {
